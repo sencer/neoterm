@@ -110,7 +110,7 @@ if !exists('g:neoterm_auto_repl_cmd')
 end
 
 if !exists('g:neoterm_command_prefix')
-    let g:neoterm_command_prefix = ''
+  let g:neoterm_command_prefix = ''
 end
 
 if !exists('g:neoterm_term_per_tab')
@@ -158,14 +158,9 @@ command! Tnext
 command! Tprevious
       \ call neoterm#previous()
 " REPL
-command! -bar -complete=customlist,neoterm#list -nargs=1 TREPLSetTerm
-      \ call neoterm#repl#term(<q-args>)
-command! -range=% TREPLSendFile
-      \ call neoterm#repl#line(<line1>, <line2>)
-command! -range TREPLSendSelection
-      \ call neoterm#repl#selection()
-command! -range TREPLSendLine
-      \ call neoterm#repl#line(<line1>, <line2>)
+command! -count TREPLSendFile
+      \ call neoterm#repl#send({ 'scope': 'file', 'target': <count> })
+
 " REPL selection mappings
 nnoremap <silent> <Plug>(neoterm-repl-send)
       \ :<c-u>set opfunc=neoterm#repl#opfunc<cr>g@

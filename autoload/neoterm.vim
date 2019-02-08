@@ -12,7 +12,8 @@ function! neoterm#new(...)
         \ 'handlers': {},
         \ 'mod': '',
         \ 'buffer_id': 0,
-        \ 'origin': s:winid()
+        \ 'origin': s:winid(),
+        \ 'repl_loaded': 0
         \ }, 'keep')
 
   let l:instance = extend(copy(g:neoterm.prototype), l:opts)
